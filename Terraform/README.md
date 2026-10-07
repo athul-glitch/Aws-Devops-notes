@@ -429,5 +429,255 @@ Root Module
 
 ## Terraform Backend
 
-A
+A backend determines where Terraform stores its state.
 
+The default backend stores state locally.
+
+For team environments, remote state is commonly used.
+
+AWS environments may use:
+
+* Amazon S3 for state storage
+* Locking mechanism appropriate to the Terraform/backend setup
+
+Remote state helps teams work with shared infrastructure safely.
+
+---
+
+## Terraform State Commands
+
+Useful commands include:
+
+```bash
+terraform state list
+```
+
+Lists resources tracked in the state.
+
+```bash
+terraform state show RESOURCE
+```
+
+Shows information about a resource in the state.
+
+```bash
+terraform show
+```
+
+Displays the current state or a saved plan.
+
+---
+
+## Terraform Import
+
+Terraform import allows an existing infrastructure resource to be brought under Terraform management.
+
+Example:
+
+```bash
+terraform import aws_vpc.main vpc-xxxxxxxx
+```
+
+The exact resource address and ID depend on the resource being imported.
+
+---
+
+## Terraform Refresh
+
+Terraform compares the real infrastructure with the information stored in state during normal planning and operations.
+
+A plan can be used to detect differences between configuration, state, and real infrastructure.
+
+---
+
+## Terraform Variables and Environments
+
+Variables can be used to manage different environments.
+
+Example:
+
+```text
+environments/
+├── dev/
+├── staging/
+└── production/
+```
+
+Different values can be supplied for:
+
+* AWS region
+* Instance type
+* CIDR ranges
+* Instance count
+* Environment name
+
+---
+
+## Terraform with AWS
+
+A typical AWS infrastructure project can use Terraform to create:
+
+```text
+VPC
+ |
+ +-- Internet Gateway
+ |
+ +-- Public Subnet
+ |
+ +-- Private Subnet
+ |
+ +-- Route Tables
+ |
+ +-- Security Groups
+ |
+ +-- EC2
+ |
+ +-- RDS
+ |
+ +-- S3
+```
+
+Terraform can manage these resources from configuration files.
+
+---
+
+## Terraform and Git
+
+Terraform configuration should normally be stored in Git.
+
+Example workflow:
+
+```text
+Terraform Code
+      |
+      v
+Git
+      |
+      v
+GitHub
+```
+
+This provides:
+
+* Version history
+* Change tracking
+* Collaboration
+* Review of infrastructure changes
+* Ability to revert code changes
+
+---
+
+## Terraform `.gitignore`
+
+A Terraform project should normally exclude files such as:
+
+```text
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+crash.log
+crash.*.log
+```
+
+Be careful with `.tfvars` files because they may contain sensitive values.
+
+---
+
+## Terraform Best Practices
+
+* Use meaningful resource names.
+* Use variables instead of unnecessary hardcoded values.
+* Use outputs for important resource information.
+* Keep Terraform code formatted.
+* Review `terraform plan` before applying changes.
+* Store Terraform code in Git.
+* Do not commit Terraform state files.
+* Do not hardcode AWS access keys or secrets.
+* Use IAM roles and secure credential mechanisms.
+* Use modules when infrastructure becomes repetitive.
+* Separate development and production environments.
+* Avoid running `terraform destroy` against production infrastructure without verifying the target.
+* Use remote state when working in a team.
+
+---
+
+## Basic Terraform Project Example
+
+A simple AWS VPC project:
+
+```text
+sheepeye2/
+└── Terraform/
+    ├── provider.tf
+    ├── vpc.tf
+    ├── subnet.tf
+    ├── variables.tf
+    ├── outputs.tf
+    └── .gitignore
+```
+
+Example workflow:
+
+```bash
+terraform init
+terraform fmt
+terraform validate
+terraform plan
+terraform apply
+```
+
+When the infrastructure is no longer required:
+
+```bash
+terraform destroy
+```
+
+---
+
+## Terraform Workflow Summary
+
+```text
+                    Terraform Configuration
+                              |
+                              v
+                       terraform init
+                              |
+                              v
+                      terraform validate
+                              |
+                              v
+                         terraform plan
+                              |
+                              v
+                        terraform apply
+                              |
+                              v
+                      AWS Infrastructure
+                              |
+                              v
+                       Terraform State
+```
+
+---
+
+## Key Takeaways
+
+* Terraform is an Infrastructure as Code tool.
+* Terraform configuration is written mainly in HCL.
+* Providers allow Terraform to interact with platforms such as AWS.
+* Resources represent infrastructure managed by Terraform.
+* Variables make configurations reusable.
+* Outputs expose useful resource information.
+* State allows Terraform to track managed infrastructure.
+* `terraform init` initializes a project.
+* `terraform fmt` formats configuration.
+* `terraform validate` checks configuration.
+* `terraform plan` previews changes.
+* `terraform apply` applies changes.
+* `terraform destroy` removes managed infrastructure.
+* Modules allow infrastructure code to be reused.
+* Data sources retrieve information about existing infrastructure.
+* Git provides version control for Terraform code.
+* Secrets and state files should not be exposed in public repositories.
