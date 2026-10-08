@@ -1,102 +1,87 @@
 # AWS Notes
 
-My practical AWS notes for cloud infrastructure, AWS Solutions Architect Associate (SAA-C03) preparation, and junior cloud support roles.
+Practical AWS notes focused on **cloud infrastructure, networking, security, storage, monitoring, and architecture**.
 
-## AWS Fundamentals
+These notes are intended for learning and hands-on practice with AWS, with a focus on concepts useful for **Cloud Support, Cloud Infrastructure, and AWS Solutions Architect** roles.
 
-- AWS Global Infrastructure
-- Regions and Availability Zones
-- Shared Responsibility Model
-- AWS Pricing and Billing
-- IAM
-- AWS Organizations
+## 📚 Topics
 
-## Compute
+### Compute
 
-- Amazon EC2
-- AMIs
-- Instance Types
-- EBS
-- Elastic IP
-- User Data
-- EC2 Instance Store
-- Auto Scaling
-- Elastic Load Balancing
-- Lambda
+* EC2
+* Lambda
+* Elastic Load Balancing
+* Auto Scaling
 
-## Networking
+### Networking
 
-- Amazon VPC
-- Public and Private Subnets
-- Route Tables
-- Internet Gateway
-- NAT Gateway
-- Security Groups
-- Network ACLs
-- VPC Peering
-- Transit Gateway
-- VPC Endpoints
-- Route 53
+* VPC
+* Subnets
+* Route Tables
+* Internet Gateway
+* NAT Gateway
+* Security Groups
+* Network ACLs
+* VPC Peering
+* Transit Gateway
 
-## Storage
+### Storage
 
-- Amazon S3
-- S3 Storage Classes
-- S3 Lifecycle
-- S3 Versioning
-- S3 Encryption
-- EFS
-- EBS
+* S3
+* EBS
+* EFS
+* S3 Glacier
 
-## Databases
+### Databases
 
-- Amazon RDS
-- Amazon Aurora
-- RDS Multi-AZ
-- Read Replicas
-- Database Backups
+* RDS
+* Aurora
+* DynamoDB
 
-## Monitoring
+### Security & Identity
 
-- Amazon CloudWatch
-- CloudWatch Metrics
-- CloudWatch Logs
-- CloudWatch Alarms
-- AWS CloudTrail
+* IAM
+* IAM Users, Groups and Roles
+* IAM Policies
+* KMS
+* AWS Organizations
 
-## Application Services
+### Monitoring & Logging
 
-- SNS
-- SQS
-- SES
-- CloudFront
+* CloudWatch
+* CloudTrail
+* AWS Config
 
-## Management & Infrastructure
+### DNS & Content Delivery
 
-- AWS CloudFormation
-- AWS Systems Manager
-- AWS Trusted Advisor
+* Route 53
+* CloudFront
+* ACM
 
-## Security
+### Messaging & Application Services
 
-- IAM Users
-- IAM Groups
-- IAM Roles
-- IAM Policies
-- Least Privilege
-- MFA
-- KMS
-- Security Groups vs NACLs
+* SNS
+* SQS
+* EventBridge
 
-## Important AWS Comparisons
+### Infrastructure as Code
 
-- Security Group vs NACL
-- EBS vs EFS
-- S3 vs EBS
-- RDS Multi-AZ vs Read Replica
-- NAT Gateway vs Internet Gateway
-- SNS vs SQS
-- CloudWatch vs CloudTrail
-- ALB vs NLB
-- Public Subnet vs Private Subnet
+* CloudFormation
+* Terraform
 
+## 🎯 Learning Focus
+
+The notes focus on understanding:
+
+* AWS core services
+* Cloud networking
+* Security and access control
+* High availability and scalability
+* Monitoring and troubleshooting
+* Cost-aware architecture
+* Infrastructure as Code
+* Real-world cloud infrastructure scenarios
+
+## 📁 Notes
+
+Individual AWS services and concepts are documented in separate Markdown files for easier reference and revision.
